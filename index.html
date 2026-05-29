@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MiloFlow - Personal AI Memory for iPhone</title>
+    <meta
+      name="description"
+      content="MiloFlow is a personal AI memory workspace for iPhone. Talk to a private agent that remembers over time, searches your own vault, and turns conversations into reminders, notes, and action items."
+    />
+    <meta name="theme-color" content="#e3e8de" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1f21" media="(prefers-color-scheme: dark)" />
+    <meta property="og:title" content="MiloFlow" />
+    <meta property="og:description" content="Personal AI memory for your life." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/brand/app-icon-512.png" />
+    <link rel="icon" href="assets/brand/app-icon-512.png" />
+    <link rel="apple-touch-icon" href="assets/brand/app-icon-512.png" />
+    <script>
+      (function () {
+        var theme = null;
+        try {
+          theme = window.localStorage.getItem("miloflow-theme");
+        } catch (error) {
+          theme = null;
+        }
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.setAttribute("data-theme", theme);
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css?v=20260529g" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="MiloFlow home">
+        <img src="assets/brand/miloflow-app-icon.svg" alt="" />
+        <span><span class="brand-milo">Milo</span><span class="brand-flow">Flow</span></span>
+      </a>
+      <div class="header-actions">
+        <nav>
+          <a href="#workflow">Flow</a>
+          <a href="#use-cases">Workspaces</a>
+          <a href="#models">Models</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#pricing">Pricing</a>
+        </nav>
+        <a class="header-cta" href="mailto:support@miloflow.ai?subject=MiloFlow%20TestFlight">Request TestFlight</a>
+        <button class="theme-toggle" type="button" aria-label="Theme mode: System" aria-pressed="mixed">
+          <span class="theme-icon" aria-hidden="true"></span>
+          <span class="theme-label">System</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">MiloFlow for iPhone</p>
+          <h1 id="hero-title">
+            <span class="hero-title-main">Personal AI memory</span>
+            <span class="hero-title-sub">for your life.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Talk to a private agent that remembers over time, searches your own vault, and turns conversations into reminders, notes, and action items.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="mailto:support@miloflow.ai?subject=MiloFlow%20TestFlight">Request TestFlight</a>
+            <a class="secondary-action" href="#workflow">See the flow</a>
+          </div>
+          <p class="availability-note">iPhone-first. Free Milo chat. Pro workspaces with your Gemini key. Max adds hosted Gemini without API-key setup.</p>
+          <div class="signal-strip" aria-label="MiloFlow launch highlights">
+            <span>Local records</span>
+            <span>Markdown vault</span>
+            <span>Action receipts</span>
+            <span>Incognito mode</span>
+          </div>
+        </div>
+
+        <div class="hero-scene" aria-hidden="true">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="ios-status">
+                <strong>8:46</strong>
+                <span class="status-stack" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i>
+                </span>
+                <span class="battery-pill">100</span>
+              </div>
+              <div class="app-nav-row">
+                <span class="round-control back-control" aria-hidden="true"></span>
+              </div>
+              <div class="real-ui-card real-ui-header">
+                <div class="real-ui-meta">
+                  <span>MILO</span>
+                </div>
+                <h3>Chat with Milo</h3>
+                <div class="control-pills">
+                  <span class="control-pill voice-pill">Puck</span>
+                  <span class="control-pill live-pill"><i></i>Gemini Live</span>
+                  <span class="control-pill search-pill">50</span>
+                </div>
+              </div>
+              <div class="message-bubble milo-bubble">
+                <span>Milo</span>
+                Ready when you are. Chat, capture, or search your vault?
+              </div>
+              <div class="message-bubble you-bubble">
+                <span>You</span>
+                Remind me to vacuum the house at 7:00 PM today.
+              </div>
+              <div class="message-bubble milo-bubble action-bubble">
+                <span>Milo</span>
+                <div class="receipt-mini">Reminder created - Today 7:00 PM</div>
+                Alright, I recorded that and kept the receipt with the conversation.
+              </div>
+              <div class="input-dock">
+                <span class="add-control">+</span>
+                <span class="input-placeholder">Ask anything...</span>
+                <span class="mic-icon" aria-hidden="true"></span>
+                <span class="wave-control" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band workflow" id="workflow" aria-labelledby="workflow-title">
+        <div class="workflow-layout">
+          <div class="section-heading">
+            <p class="eyebrow">How it works</p>
+            <h2 id="workflow-title">Talk. Capture. Act. Remember.</h2>
+            <p>
+              A short loop for moving from spoken thought to useful record without managing another system.
+            </p>
+          </div>
+          <ol class="workflow-steps" aria-label="MiloFlow workflow">
+            <li>
+              <span>01</span>
+              <strong>Talk</strong>
+              <p>Voice or text in Milo.</p>
+            </li>
+            <li>
+              <span>02</span>
+              <strong>Capture</strong>
+              <p>Notes, summaries, and receipts stay attached.</p>
+            </li>
+            <li>
+              <span>03</span>
+              <strong>Act</strong>
+              <p>Review reminders and action items.</p>
+            </li>
+            <li>
+              <span>04</span>
+              <strong>Remember</strong>
+              <p>Search local records or export Markdown.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="intro band liquid-milo" id="use-cases" aria-labelledby="use-cases-title">
+        <div class="section-heading">
+          <p class="eyebrow">Workspaces</p>
+          <h2 id="use-cases-title">One assistant, several places to think.</h2>
+          <p>
+            Use the same private assistant for quick thoughts, deeper work, and the follow-through that usually slips away.
+          </p>
+        </div>
+        <div class="feature-grid three">
+          <article>
+            <span class="feature-icon chat" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 6.8A5.2 5.2 0 0 1 10.2 2h3.6A5.2 5.2 0 0 1 19 7.2v2.9a5.2 5.2 0 0 1-5.2 5.2h-2.7L6.7 19v-4.2A5.2 5.2 0 0 1 5 10.9Z" />
+                <path d="M9 8h6M9 11.2h3.8" />
+              </svg>
+            </span>
+            <h3>Milo chat</h3>
+            <p>Use regular chat, voice, web requests, vault search, or Incognito when you want a private thought partner.</p>
+          </article>
+          <article>
+            <span class="feature-icon capture" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 4.5h8M9 3h6l1 3H8Z" />
+                <path d="M7 5.5H5.8A1.8 1.8 0 0 0 4 7.3v11.9A1.8 1.8 0 0 0 5.8 21h12.4a1.8 1.8 0 0 0 1.8-1.8V7.3a1.8 1.8 0 0 0-1.8-1.8H17" />
+                <path d="M8 11h8M8 15h5" />
+              </svg>
+            </span>
+            <h3>Capture workspaces</h3>
+            <p>Projects, journals, and discussions turn messy thinking into summaries, decisions, requirements, and notes.</p>
+          </article>
+          <article>
+            <span class="feature-icon action" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20 7 10.5 17 6 12.7" />
+                <path d="M12 21a9 9 0 1 1 7.5-14" />
+              </svg>
+            </span>
+            <h3>Follow through</h3>
+            <p>Create reminders, review action items, and keep every tool receipt next to the conversation that caused it.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band providers" id="models" aria-labelledby="providers-title">
+        <div class="section-heading">
+          <p class="eyebrow">Model choices</p>
+          <h2 id="providers-title">Use the right model for the moment.</h2>
+          <p>
+            Each mode has a clear role. Start local when you can, bring your own Gemini key for Pro cloud features, or use Max when you want hosted Gemini handled for you.
+          </p>
+        </div>
+        <div class="provider-cards" aria-label="MiloFlow provider comparison">
+          <article class="provider-card local">
+            <div class="provider-title">
+              <span aria-hidden="true"></span>
+              <h3>Local Gemma</h3>
+            </div>
+            <dl>
+              <div>
+                <dt>Best for</dt>
+                <dd>Private chat, offline-friendly thinking, and everyday reflection</dd>
+              </div>
+              <div>
+                <dt>Experience</dt>
+                <dd>Runs on device when local assets are ready</dd>
+              </div>
+              <div>
+                <dt>Cost</dt>
+                <dd>No cloud usage bill</dd>
+              </div>
+            </dl>
+          </article>
+          <article class="provider-card cloud">
+            <div class="provider-title">
+              <span aria-hidden="true"></span>
+              <h3>Gemini Cloud</h3>
+            </div>
+            <dl>
+              <div>
+                <dt>Best for</dt>
+                <dd>Everyday cloud chat with typed or spoken turns</dd>
+              </div>
+              <div>
+                <dt>Experience</dt>
+                <dd>Apple transcript in, Gemini text out, local voice back</dd>
+              </div>
+              <div>
+                <dt>Cost</dt>
+                <dd>Use your own API key, or hosted Gemini on Max</dd>
+              </div>
+            </dl>
+          </article>
+          <article class="provider-card live">
+            <div class="provider-title">
+              <span aria-hidden="true"></span>
+              <h3>Gemini Live</h3>
+            </div>
+            <dl>
+              <div>
+                <dt>Best for</dt>
+                <dd>Fast voice, interruptions, watch remote, and richer tools</dd>
+              </div>
+              <div>
+                <dt>Experience</dt>
+                <dd>Provider realtime audio with visible transcripts and receipts</dd>
+              </div>
+              <div>
+                <dt>Access</dt>
+                <dd>Pro with your key, or Max with hosted Gemini</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="band knowledge" id="privacy" aria-labelledby="privacy-title">
+        <div class="section-heading">
+          <p class="eyebrow">Memory and privacy</p>
+          <h2 id="privacy-title">Your knowledge base belongs to you.</h2>
+          <p>
+            Unlike a generic chat session, Milo can build continuity around your own notes and preferences. The source of truth is your local app data and optional Markdown vault.
+          </p>
+        </div>
+        <div class="feature-grid three">
+          <article>
+            <span class="feature-icon vault" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3.5 7.5A2.5 2.5 0 0 1 6 5h3.2l2 2H18a2.5 2.5 0 0 1 2.5 2.5v7A2.5 2.5 0 0 1 18 19H6a2.5 2.5 0 0 1-2.5-2.5Z" />
+                <path d="M8 13h8" />
+              </svg>
+            </span>
+            <h3>User-owned vault</h3>
+            <p>Keep readable Markdown notes in a folder you choose. Milo can search them when you ask.</p>
+          </article>
+          <article>
+            <span class="feature-icon memory" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 5.5v6l3.5 2" />
+                <path d="M19.2 8.8A8 8 0 1 1 16 5.2" />
+                <path d="M16.5 2.8V6h3.2" />
+              </svg>
+            </span>
+            <h3>Memory over time</h3>
+            <p>Milo can remember stable preferences and past work so future conversations start with context.</p>
+          </article>
+          <article>
+            <span class="feature-icon control" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 11V8a4 4 0 0 1 7.7-1.5" />
+                <path d="M6.8 11h10.4A1.8 1.8 0 0 1 19 12.8v5.4a1.8 1.8 0 0 1-1.8 1.8H6.8A1.8 1.8 0 0 1 5 18.2v-5.4A1.8 1.8 0 0 1 6.8 11Z" />
+                <path d="M12 15v2" />
+              </svg>
+            </span>
+            <h3>Your controls</h3>
+            <p>Refresh notes, delete the index, forget the folder, use Incognito, or export a SQLite backup.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band pricing" id="pricing" aria-labelledby="pricing-title">
+        <div class="section-heading">
+          <p class="eyebrow">Simple plans</p>
+          <h2 id="pricing-title">Milo is free. Workspaces are Pro. Hosted Gemini is Max.</h2>
+          <p>
+            Choose bring-your-own-key Pro, or Max when you want MiloFlow to host Gemini usage for you.
+          </p>
+        </div>
+        <div class="price-grid">
+          <article>
+            <h3>Free</h3>
+            <p class="plan-kicker">For private chat and local memory basics</p>
+            <p class="price">$0</p>
+            <ul>
+              <li>Regular Milo and Incognito Milo</li>
+              <li>Local Gemma when assets are installed</li>
+              <li>Gemini Cloud with your own API key</li>
+              <li>Local vault memory search</li>
+              <li>Milo reminders and Apple Reminders linking</li>
+            </ul>
+            <a class="plan-action" href="mailto:support@miloflow.ai?subject=MiloFlow%20TestFlight">Request TestFlight</a>
+          </article>
+          <article>
+            <h3>Pro</h3>
+            <p class="plan-kicker">For workspaces with your own Gemini key</p>
+            <p class="price">$6.99 <span>/ month</span></p>
+            <p class="price-option">$59.99 yearly option available</p>
+            <ul>
+              <li>Project, Journal, and Discussion</li>
+              <li>Gemini Live realtime voice with your own key</li>
+              <li>Talk to Milo from your Apple Watch</li>
+              <li>Workspace summaries and action items</li>
+              <li>Workspace export</li>
+              <li>Advanced live memory and tools using your key</li>
+            </ul>
+            <a class="plan-action" href="mailto:support@miloflow.ai?subject=MiloFlow%20Pro%20TestFlight">Try Pro</a>
+          </article>
+          <article class="highlight">
+            <h3>Max</h3>
+            <p class="plan-kicker">For hosted Gemini without API-key setup</p>
+            <p class="price">$16.99 <span>/ month</span></p>
+            <p class="price-option">$149.99 yearly option available</p>
+            <ul>
+              <li>Everything in Pro</li>
+              <li>Hosted Gemini without API-key setup</li>
+              <li>150 hosted Live minutes per month</li>
+              <li>1,000 hosted text and tool actions per month</li>
+              <li>100 hosted web-search answers per month</li>
+              <li>Bring your own key anytime as a fallback</li>
+            </ul>
+            <a class="plan-action primary" href="mailto:support@miloflow.ai?subject=MiloFlow%20Max%20TestFlight">Try Max</a>
+          </article>
+        </div>
+        <p class="pricing-note">Pricing may vary by App Store region. Pro cloud usage is billed by Google through the API key you provide. Max includes hosted Gemini usage up to fair-use limits.</p>
+      </section>
+
+      <section class="band final-cta" aria-labelledby="final-cta-title">
+        <div class="final-cta-panel">
+          <div>
+            <p class="eyebrow">TestFlight</p>
+            <h2 id="final-cta-title">Bring your scattered thoughts into one private thread.</h2>
+            <p>
+              MiloFlow is for people who want the ease of talking and the control of owned notes, clear privacy boundaries, and reviewable actions.
+            </p>
+          </div>
+          <a class="primary-action" href="mailto:support@miloflow.ai?subject=MiloFlow%20TestFlight">Request TestFlight</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="footer-brand" href="#top" aria-label="MiloFlow home">
+        <img src="assets/brand/miloflow-app-icon.svg" alt="" />
+        <span><span class="brand-milo">Milo</span><span class="brand-flow">Flow</span></span>
+      </a>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="mailto:support@miloflow.ai">Contact</a>
+      </div>
+      <p>Personal AI memory and work in motion.</p>
+    </footer>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var button = document.querySelector(".theme-toggle");
+        var label = button ? button.querySelector(".theme-label") : null;
+        var systemDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+        var selectedTheme = readStoredTheme();
+
+        function readStoredTheme() {
+          try {
+            var theme = window.localStorage.getItem("miloflow-theme");
+            if (theme === "light" || theme === "dark" || theme === "system") {
+              return theme;
+            }
+          } catch (error) {
+            return "system";
+          }
+          return "system";
+        }
+
+        function activeVisualTheme() {
+          if (selectedTheme === "light" || selectedTheme === "dark") {
+            return selectedTheme;
+          }
+          return systemDark && systemDark.matches ? "dark" : "light";
+        }
+
+        function saveTheme(theme) {
+          try {
+            window.localStorage.setItem("miloflow-theme", theme);
+          } catch (error) {
+            return;
+          }
+        }
+
+        function updateButton() {
+          var visualTheme = activeVisualTheme();
+          if (!button || !label) return;
+          if (selectedTheme === "system") {
+            button.setAttribute("aria-pressed", "mixed");
+            button.setAttribute("aria-label", "Theme mode: System. Switch to day mode");
+            label.textContent = "System";
+          } else if (selectedTheme === "light") {
+            button.setAttribute("aria-pressed", "false");
+            button.setAttribute("aria-label", "Theme mode: Day. Switch to night mode");
+            label.textContent = "Day";
+          } else {
+            button.setAttribute("aria-pressed", "true");
+            button.setAttribute("aria-label", "Theme mode: Night. Switch to system mode");
+            label.textContent = "Night";
+          }
+          button.setAttribute("title", "Theme: " + label.textContent + " (" + visualTheme + " active)");
+        }
+
+        if (!button) return;
+
+        button.addEventListener("click", function (event) {
+          event.preventDefault();
+          var nextTheme = selectedTheme === "system" ? "light" : selectedTheme === "light" ? "dark" : "system";
+          if (nextTheme === "light" || nextTheme === "dark") {
+            root.setAttribute("data-theme", nextTheme);
+          } else {
+            root.removeAttribute("data-theme");
+          }
+          selectedTheme = nextTheme;
+          saveTheme(nextTheme);
+          updateButton();
+        }, false);
+
+        if (systemDark) {
+          if (systemDark.addEventListener) {
+            systemDark.addEventListener("change", updateButton);
+          } else if (systemDark.addListener) {
+            systemDark.addListener(updateButton);
+          }
+        }
+
+        updateButton();
+      })();
+    </script>
+  </body>
+</html>

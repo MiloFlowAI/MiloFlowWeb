@@ -1,0 +1,52 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">MiloFlow app icon</title>
+  <desc id="desc">A smooth teal MiloFlow app icon with a friendly speech bubble and flowing voice paths.</desc>
+  <defs>
+    <linearGradient id="backgroundGradient" x1="124" y1="96" x2="904" y2="926" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E6B63"/>
+      <stop offset="0.55" stop-color="#1AA196"/>
+      <stop offset="1" stop-color="#7BD3B6"/>
+    </linearGradient>
+    <radialGradient id="softGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(658 650) rotate(132) scale(510 460)">
+      <stop offset="0" stop-color="#D9FFF8" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#D9FFF8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flowStroke" x1="286" y1="462" x2="720" y2="506" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F1FFFC"/>
+      <stop offset="1" stop-color="#CBF7EF"/>
+    </linearGradient>
+    <filter id="bubbleShadow" x="126" y="252" width="772" height="516" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="28"/>
+      <feGaussianBlur stdDeviation="22"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.18 0 0 0 0 0.19 0 0 0 0.20 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#backgroundGradient)"/>
+  <rect width="1024" height="1024" fill="url(#softGlow)"/>
+
+  <g transform="translate(512 512) scale(1.07) translate(-512 -512)">
+  <g filter="url(#bubbleShadow)">
+    <path d="M512 292C684.7 292 824 377.4 824 482.8C824 588.2 684.7 673.5 512 673.5C468.9 673.5 427.8 668.2 390.5 658.5L320.5 713.6C303.2 727.2 279.2 710.6 285.5 689.5L304.7 626.1C240.9 590.9 200 539.8 200 482.8C200 377.4 339.7 292 512 292Z" fill="white" fill-opacity="0.15"/>
+    <path d="M512 292C684.7 292 824 377.4 824 482.8C824 588.2 684.7 673.5 512 673.5C468.9 673.5 427.8 668.2 390.5 658.5L320.5 713.6C303.2 727.2 279.2 710.6 285.5 689.5L304.7 626.1C240.9 590.9 200 539.8 200 482.8C200 377.4 339.7 292 512 292Z" stroke="white" stroke-opacity="0.16" stroke-width="10" stroke-linejoin="round"/>
+  </g>
+
+  <g>
+    <path d="M306 462C404 526 542 535 684 466C710 454 730 458 736 473C743 489 727 504 698 516C546 581 402 573 304 507C283 493 277 476 289 465C299 456 316 456 306 462Z" fill="url(#flowStroke)" fill-opacity="0.94"/>
+    <path d="M350 496C449 540 562 540 686 492" stroke="#74BDB7" stroke-opacity="0.24" stroke-width="8" stroke-linecap="round"/>
+    <path d="M402 484C483 518 582 517 692 481" stroke="#F7FFFD" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+    <path d="M600 526C636 522 668 514 700 500" stroke="#74BDB7" stroke-opacity="0.20" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <circle cx="420" cy="410" r="18" fill="#F1FFFC" fill-opacity="0.70"/>
+  <circle cx="600" cy="410" r="18" fill="#F1FFFC" fill-opacity="0.50"/>
+
+  <path d="M258 209C267.5 242 285 259.5 318 269C285 278.5 267.5 296 258 329C248.5 296 231 278.5 198 269C231 259.5 248.5 242 258 209Z" fill="#E96F50"/>
+  <circle cx="776" cy="704" r="31" fill="#F2C66B"/>
+  </g>
+</svg>
