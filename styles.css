@@ -1624,6 +1624,12 @@ footer p {
     background: linear-gradient(180deg, var(--page) 0%, rgba(255, 255, 255, 0) 48%, var(--page) 100%);
     inset: 0;
     opacity: 0.62;
+    z-index: 0;
+  }
+
+  .hero::after {
+    height: 16%;
+    z-index: 1;
   }
 
   .hero-copy {
@@ -1646,30 +1652,36 @@ footer p {
     left: -20%;
     opacity: 0.38;
     width: 140%;
+    z-index: 1;
   }
 
   .hero-scene {
-    aspect-ratio: 1.18 / 1;
-    display: block;
+    align-items: center;
+    aspect-ratio: auto;
+    display: flex;
     grid-column: 1;
     grid-row: 2;
-    height: auto;
+    height: clamp(300px, 84vw, 360px);
     inset: auto;
+    justify-content: center;
     margin: -18px calc(clamp(22px, 6vw, 84px) * -1) -46px;
     opacity: 1;
     position: relative;
     width: auto;
+    z-index: 2;
   }
 
   .hero-product-image {
+    flex: 0 0 auto;
     height: auto;
     inset: auto;
-    left: 50%;
+    left: auto;
     max-width: none;
+    position: relative;
     right: auto;
-    top: 50%;
-    transform: translate(-48%, -50%);
-    width: min(136vw, 560px);
+    top: auto;
+    transform: translateX(7%);
+    width: min(142vw, 580px);
   }
 
   .hero-product-image-light {
