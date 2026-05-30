@@ -1,0 +1,65 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">MiloFlow logo</title>
+  <desc id="desc">MiloFlow logo with a rounded teal app mark, a speech bubble, and a flowing voice path.</desc>
+  <defs>
+    <style>
+      .wordmark-milo { fill: #1e6b63; }
+      .wordmark-flow { fill: #1AA196; }
+      .wordmark-milo-bar { stroke: #1e6b63; }
+      .wordmark-flow-bar { stroke: #1AA196; }
+      .wordmark-tagline { fill: #6D7E7E; }
+
+    </style>
+    <linearGradient id="markGradient" x1="52" y1="42" x2="302" y2="296" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E6B63"/>
+      <stop offset="0.58" stop-color="#1AA196"/>
+      <stop offset="1" stop-color="#7BD3B6"/>
+    </linearGradient>
+    <linearGradient id="flowStroke" x1="106" y1="160" x2="244" y2="174" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F1FFFC"/>
+      <stop offset="1" stop-color="#CBF7EF"/>
+    </linearGradient>
+    <filter id="softShadow" x="10" y="8" width="330" height="332" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="14"/>
+      <feGaussianBlur stdDeviation="18"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.08 0 0 0 0 0.13 0 0 0 0 0.15 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <rect x="54" y="42" width="252" height="252" rx="64" fill="url(#markGradient)"/>
+
+    <!-- Speech bubble: the "Milo" companion. Softer organic curves keep it approachable. -->
+    <path d="M180 111.2C233.4 111.2 276.5 137.6 276.5 170.2C276.5 202.8 233.4 229.2 180 229.2C166.7 229.2 154 227.6 142.4 224.6L120.7 241.7C115.4 245.9 107.9 240.7 109.9 234.2L115.8 214.5C96.1 203.6 83.5 187.8 83.5 170.2C83.5 137.6 126.7 111.2 180 111.2Z" fill="white" fill-opacity="0.15"/>
+    <path d="M180 111.2C233.4 111.2 276.5 137.6 276.5 170.2C276.5 202.8 233.4 229.2 180 229.2C166.7 229.2 154 227.6 142.4 224.6L120.7 241.7C115.4 245.9 107.9 240.7 109.9 234.2L115.8 214.5C96.1 203.6 83.5 187.8 83.5 170.2C83.5 137.6 126.7 111.2 180 111.2Z" stroke="white" stroke-opacity="0.16" stroke-width="3.2" stroke-linejoin="round"/>
+
+    <!-- Flow stroke: voice/thoughts moving through the chat. -->
+    <g>
+      <path d="M115.7 164C146 183.8 188.7 186.6 232.6 165.3C240.6 161.6 246.9 162.8 248.8 167.4C250.9 172.4 245.9 177.1 237 180.8C190 200.9 145.4 198.4 115.1 178C108.6 173.7 106.7 168.4 110.4 164.9C113.5 162.2 118.8 162.2 115.7 164Z" fill="url(#flowStroke)" fill-opacity="0.94"/>
+      <path d="M129 174.5C159.6 188.1 194.5 188.1 232.8 173.3" stroke="#74BDB7" stroke-opacity="0.24" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M145.5 171C170.5 181.5 201.1 181.2 235.3 170.1" stroke="#F7FFFD" stroke-opacity="0.45" stroke-width="1.9" stroke-linecap="round"/>
+      <path d="M206.7 183.9C217.8 182.6 227.7 180.2 237.6 175.9" stroke="#74BDB7" stroke-opacity="0.20" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Small input dots make the speech-bubble reading immediate. -->
+    <circle cx="151" cy="148" r="5.6" fill="#F1FFFC" fill-opacity="0.70"/>
+    <circle cx="207" cy="148" r="5.6" fill="#F1FFFC" fill-opacity="0.50"/>
+
+    <!-- Warm accents for Journal / Discussion / Projects. -->
+    <path d="M100 82C102.8 92.2 108.3 97.8 118.5 100.5C108.3 103.2 102.8 108.8 100 119C97.2 108.8 91.7 103.2 81.5 100.5C91.7 97.8 97.2 92.2 100 82Z" fill="#E96F50"/>
+    <circle cx="258" cy="238" r="10" fill="#F2C66B"/>
+  </g>
+
+  <g aria-label="MiloFlow wordmark">
+    <text class="wordmark-milo" x="380" y="188" font-family="Avenir Next, Inter, SF Pro Display, Helvetica Neue, Arial, sans-serif" font-size="106" font-weight="800" letter-spacing="-1.5">Milo</text>
+    <text class="wordmark-flow" x="624" y="188" font-family="Avenir Next, Inter, SF Pro Display, Helvetica Neue, Arial, sans-serif" font-size="106" font-weight="800" letter-spacing="-1.5">Flow</text>
+    <path class="wordmark-milo-bar" d="M386 225H872" stroke-width="10" stroke-linecap="round"/>
+    <path class="wordmark-flow-bar" d="M624 225H872" stroke-width="10" stroke-linecap="butt"/>
+    <text class="wordmark-tagline" x="386" y="270" font-family="Avenir Next, Inter, SF Pro Text, Helvetica Neue, Arial, sans-serif" font-size="31" font-weight="600" letter-spacing="0.4">private voice, thoughts, and work in motion</text>
+  </g>
+</svg>
