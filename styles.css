@@ -1686,7 +1686,7 @@ footer p {
     position: relative;
     right: auto;
     top: auto;
-    transform: translateX(7%);
+    transform: translateX(1%);
     width: min(142vw, 580px);
   }
 
