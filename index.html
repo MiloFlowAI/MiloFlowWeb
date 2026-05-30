@@ -31,7 +31,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260529g" />
+    <link rel="stylesheet" href="styles.css?v=20260530d" />
   </head>
   <body>
     <header class="site-header" aria-label="Primary navigation">
@@ -57,6 +57,14 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-flow-visual" aria-hidden="true">
+          <svg viewBox="0 0 680 300" preserveAspectRatio="none">
+            <path class="hero-flow-line hero-flow-line-teal-muted" d="M-24 38 C76 118 152 132 268 136 C390 140 424 218 548 234 C604 241 650 236 704 226" />
+            <path class="hero-flow-line hero-flow-line-teal" d="M-20 106 C88 184 184 192 292 190 C408 188 438 254 552 270 C612 278 654 274 708 264" />
+            <path class="hero-flow-line hero-flow-line-gold" d="M-18 176 C84 246 166 236 278 236 C386 236 430 304 566 314 C620 318 666 314 708 304" />
+            <path class="hero-flow-line hero-flow-line-shadow" d="M-26 132 C90 216 178 218 294 218 C410 218 446 286 570 296 C624 300 668 296 710 288" />
+          </svg>
+        </div>
         <div class="hero-copy">
           <p class="eyebrow">MiloFlow for iPhone</p>
           <h1 id="hero-title">
@@ -80,50 +88,20 @@
         </div>
 
         <div class="hero-scene" aria-hidden="true">
-          <div class="phone">
-            <div class="phone-screen">
-              <div class="ios-status">
-                <strong>8:46</strong>
-                <span class="status-stack" aria-hidden="true">
-                  <i></i><i></i><i></i><i></i>
-                </span>
-                <span class="battery-pill">100</span>
-              </div>
-              <div class="app-nav-row">
-                <span class="round-control back-control" aria-hidden="true"></span>
-              </div>
-              <div class="real-ui-card real-ui-header">
-                <div class="real-ui-meta">
-                  <span>MILO</span>
-                </div>
-                <h3>Chat with Milo</h3>
-                <div class="control-pills">
-                  <span class="control-pill voice-pill">Puck</span>
-                  <span class="control-pill live-pill"><i></i>Gemini Live</span>
-                  <span class="control-pill search-pill">50</span>
-                </div>
-              </div>
-              <div class="message-bubble milo-bubble">
-                <span>Milo</span>
-                Ready when you are. Chat, capture, or search your vault?
-              </div>
-              <div class="message-bubble you-bubble">
-                <span>You</span>
-                Remind me to vacuum the house at 7:00 PM today.
-              </div>
-              <div class="message-bubble milo-bubble action-bubble">
-                <span>Milo</span>
-                <div class="receipt-mini">Reminder created - Today 7:00 PM</div>
-                Alright, I recorded that and kept the receipt with the conversation.
-              </div>
-              <div class="input-dock">
-                <span class="add-control">+</span>
-                <span class="input-placeholder">Ask anything...</span>
-                <span class="mic-icon" aria-hidden="true"></span>
-                <span class="wave-control" aria-hidden="true"></span>
-              </div>
-            </div>
-          </div>
+          <img
+            class="hero-product-image hero-product-image-light"
+            src="assets/hero/miloflow-dynamic-bar-hero-light.webp"
+            alt=""
+            decoding="async"
+            fetchpriority="high"
+          />
+          <img
+            class="hero-product-image hero-product-image-dark"
+            src="assets/hero/miloflow-dynamic-bar-hero-dark.webp"
+            alt=""
+            decoding="async"
+            fetchpriority="high"
+          />
         </div>
       </section>
 

@@ -70,6 +70,11 @@
   --hero-dot: rgba(30, 107, 99, 0.25);
   --hero-dot-glow: rgba(123, 211, 182, 0.25);
   --hero-dot-opacity: 0.72;
+  --hero-flow-dot: rgba(30, 107, 99, 0.14);
+  --hero-flow-teal: rgba(30, 107, 99, 0.36);
+  --hero-flow-teal-muted: rgba(30, 107, 99, 0.22);
+  --hero-flow-gold: rgba(196, 133, 51, 0.32);
+  --hero-flow-shadow: rgba(26, 38, 41, 0.10);
   --hero-scene-shine: rgba(255, 255, 255, 0.42);
   --hero-scene-dot: rgba(30, 107, 99, 0.20);
   --phone-shadow: rgba(92, 108, 100, 0.32);
@@ -152,6 +157,11 @@
     --hero-dot: rgba(30, 107, 99, 0.18);
     --hero-dot-glow: rgba(123, 211, 182, 0.18);
     --hero-dot-opacity: 0.58;
+    --hero-flow-dot: rgba(123, 211, 182, 0.24);
+    --hero-flow-teal: rgba(39, 183, 170, 0.52);
+    --hero-flow-teal-muted: rgba(39, 183, 170, 0.30);
+    --hero-flow-gold: rgba(233, 128, 64, 0.48);
+    --hero-flow-shadow: rgba(245, 242, 232, 0.08);
     --hero-scene-shine: rgba(255, 255, 255, 0.28);
     --hero-scene-dot: rgba(123, 211, 182, 0.32);
     --phone-shadow: rgba(0, 0, 0, 0.36);
@@ -235,6 +245,11 @@
   --hero-dot: rgba(30, 107, 99, 0.18);
   --hero-dot-glow: rgba(123, 211, 182, 0.18);
   --hero-dot-opacity: 0.58;
+  --hero-flow-dot: rgba(123, 211, 182, 0.24);
+  --hero-flow-teal: rgba(39, 183, 170, 0.52);
+  --hero-flow-teal-muted: rgba(39, 183, 170, 0.30);
+  --hero-flow-gold: rgba(233, 128, 64, 0.48);
+  --hero-flow-shadow: rgba(245, 242, 232, 0.08);
   --hero-scene-shine: rgba(255, 255, 255, 0.28);
   --hero-scene-dot: rgba(123, 211, 182, 0.32);
   --phone-shadow: rgba(0, 0, 0, 0.36);
@@ -414,46 +429,92 @@ nav a:hover {
 .hero {
   align-items: center;
   display: grid;
-  gap: clamp(28px, 4vw, 56px);
-  grid-template-columns: minmax(0, 1.18fr) minmax(310px, 0.62fr);
+  gap: clamp(26px, 4vw, 56px);
+  grid-template-columns: minmax(0, 0.58fr) minmax(300px, 0.42fr);
   isolation: isolate;
-  min-height: min(88svh, 680px);
+  min-height: min(88svh, 760px);
   overflow: hidden;
-  padding: 92px clamp(22px, 6vw, 84px) 24px;
+  padding: 110px clamp(22px, 6vw, 84px) 56px;
   position: relative;
   text-align: left;
 }
 
 .hero::before {
-  background:
-    radial-gradient(circle, var(--hero-dot) 1.5px, transparent 1.7px),
-    radial-gradient(circle at 50% 45%, var(--hero-dot-glow), transparent 42%);
-  background-size: 18px 18px, auto;
+  background: linear-gradient(90deg, var(--page) 0%, rgba(255, 255, 255, 0) 54%);
   content: "";
-  inset: 178px clamp(22px, 8vw, 124px) 18%;
-  mask-image: linear-gradient(180deg, transparent, #000 12%, #000 76%, transparent);
-  opacity: var(--hero-dot-opacity);
+  inset: 0 42% 0 0;
+  opacity: 0.72;
   pointer-events: none;
   position: absolute;
-  z-index: 0;
+  z-index: 2;
 }
 
 .hero::after {
-  background: linear-gradient(180deg, var(--hero-fade) 0%, var(--page) 96%);
+  background: linear-gradient(180deg, var(--hero-fade) 0%, var(--page) 92%);
   bottom: 0;
   content: "";
-  height: 26%;
+  height: 24%;
   left: 0;
   pointer-events: none;
   position: absolute;
   right: 0;
-  z-index: 0;
+  z-index: 2;
+}
+
+.hero-flow-visual {
+  background-image: radial-gradient(circle, var(--hero-flow-dot) 1.3px, transparent 1.7px);
+  background-position: 0 0;
+  background-size: 18px 18px;
+  bottom: clamp(24px, 5vw, 64px);
+  height: clamp(210px, 24vw, 300px);
+  left: max(-18px, calc(clamp(22px, 6vw, 84px) - 42px));
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 78%, transparent 100%);
+  opacity: 0.72;
+  pointer-events: none;
+  position: absolute;
+  width: min(660px, 50vw);
+  z-index: 2;
+}
+
+.hero-flow-visual svg {
+  display: block;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.hero-flow-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 1.35;
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-flow-line-teal {
+  stroke: var(--hero-flow-teal);
+}
+
+.hero-flow-line-teal-muted {
+  stroke: var(--hero-flow-teal-muted);
+}
+
+.hero-flow-line-gold {
+  stroke: var(--hero-flow-gold);
+}
+
+.hero-flow-line-shadow {
+  stroke: var(--hero-flow-shadow);
 }
 
 .hero-scene {
-  height: 500px;
-  max-width: 410px;
+  align-self: stretch;
+  grid-column: 2;
+  height: clamp(540px, 45vw, 760px);
+  margin-right: calc(clamp(22px, 6vw, 84px) * -1);
+  min-width: 0;
   opacity: 0.92;
+  overflow: hidden;
   pointer-events: none;
   position: relative;
   width: 100%;
@@ -461,15 +522,62 @@ nav a:hover {
 }
 
 .hero-scene::before {
-  background:
-    linear-gradient(90deg, transparent, var(--hero-scene-shine), transparent),
-    radial-gradient(circle, var(--hero-scene-dot) 2px, transparent 2.4px);
-  background-size: auto, 22px 22px;
-  border-radius: 16px;
+  background: radial-gradient(circle at 84% 42%, rgba(123, 211, 182, 0.22), transparent 34%);
   content: "";
-  inset: 7% 0 12%;
-  opacity: 0.72;
+  inset: 0;
+  opacity: 0.58;
   position: absolute;
+  z-index: 1;
+}
+
+.hero-scene::after {
+  background:
+    linear-gradient(90deg, var(--page) 0%, rgba(255, 255, 255, 0) 18%),
+    linear-gradient(180deg, var(--page) 0%, rgba(255, 255, 255, 0) 14%, rgba(255, 255, 255, 0) 78%, var(--page) 100%),
+    linear-gradient(270deg, var(--page) 0%, rgba(255, 255, 255, 0) 12%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.hero-product-image {
+  display: block;
+  height: auto;
+  max-width: none;
+  position: absolute;
+  right: clamp(-220px, -10vw, -120px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(820px, 62vw, 1120px);
+  z-index: 0;
+}
+
+.hero-product-image-light {
+  mix-blend-mode: multiply;
+}
+
+.hero-product-image-dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .hero-product-image-light {
+  display: none;
+}
+
+:root[data-theme="dark"] .hero-product-image-dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .hero-product-image-light {
+    display: none;
+  }
+
+  :root:not([data-theme]) .hero-product-image-dark {
+    display: block;
+  }
 }
 
 .phone {
@@ -798,7 +906,7 @@ nav a:hover {
 }
 
 .hero-copy {
-  max-width: 760px;
+  max-width: 840px;
   position: relative;
   width: 100%;
   z-index: 3;
@@ -825,6 +933,7 @@ h1 span {
 
 .hero-title-main {
   color: var(--brand-milo);
+  white-space: nowrap;
 }
 
 .hero-title-sub {
@@ -1480,9 +1589,10 @@ footer p {
   width: 38px;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1220px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(310px, 0.66fr);
+    gap: clamp(20px, 3vw, 36px);
+    grid-template-columns: minmax(0, 0.6fr) minmax(280px, 0.4fr);
     min-height: auto;
     padding-bottom: 54px;
   }
@@ -1491,13 +1601,12 @@ footer p {
     max-width: 760px;
   }
 
-  .hero-scene {
-    height: 500px;
-    max-width: 410px;
+  .hero-subtitle {
+    font-size: 23px;
   }
 
-  .hero-subtitle {
-    font-size: 25px;
+  h1 {
+    font-size: clamp(42px, 5.1vw, 62px);
   }
 
   h2 {
@@ -1505,10 +1614,16 @@ footer p {
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+
+  .hero::before {
+    background: linear-gradient(180deg, var(--page) 0%, rgba(255, 255, 255, 0) 48%, var(--page) 100%);
+    inset: 0;
+    opacity: 0.62;
   }
 
   .hero-copy {
@@ -1525,8 +1640,40 @@ footer p {
     justify-content: center;
   }
 
+  .hero-flow-visual {
+    bottom: 220px;
+    height: 190px;
+    left: -20%;
+    opacity: 0.38;
+    width: 140%;
+  }
+
   .hero-scene {
-    display: none;
+    aspect-ratio: 3 / 2;
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    height: auto;
+    inset: auto;
+    margin: -4px calc(clamp(22px, 6vw, 84px) * -1) -42px;
+    opacity: 1;
+    position: relative;
+    width: auto;
+  }
+
+  .hero-product-image {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    object-position: center right;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+  }
+
+  .hero-title-main {
+    white-space: normal;
   }
 
   .workflow-layout {
@@ -1571,35 +1718,25 @@ footer p {
   }
 
   .hero::before {
-    inset: 150px 24px 18%;
+    inset: 0;
   }
 
   .hero-scene {
-    height: auto;
-    min-height: 0;
-    opacity: 1;
-    pointer-events: none;
-    position: relative;
-    width: 100%;
+    margin-left: -22px;
+    margin-right: -22px;
   }
 
   .hero-scene::before {
-    inset: 5% 3% 10%;
-  }
-
-  .phone {
-    left: auto;
-    margin: 0 auto;
-    max-width: none;
-    position: relative;
-    top: auto;
-    transform: none;
-    width: min(430px, 92vw);
+    inset: 0;
   }
 
   h1 {
     font-size: clamp(32px, 8.7vw, 58px);
     line-height: 0.98;
+  }
+
+  .hero-title-main {
+    white-space: normal;
   }
 
   .hero-subtitle {
