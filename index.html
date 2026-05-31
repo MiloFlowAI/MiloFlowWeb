@@ -13,9 +13,15 @@
     <meta property="og:title" content="MiloFlow" />
     <meta property="og:description" content="Personal AI memory for your life." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/brand/app-icon-512.png" />
-    <link rel="icon" href="assets/brand/app-icon-512.png" />
-    <link rel="apple-touch-icon" href="assets/brand/app-icon-512.png" />
+    <meta property="og:url" content="https://miloflow.ai/" />
+    <meta property="og:image" content="https://miloflow.ai/assets/brand/miloflow-og-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://miloflow.ai/" />
+    <link rel="icon" type="image/svg+xml" href="assets/brand/miloflow-app-icon.svg" />
+    <link rel="icon" sizes="32x32" href="assets/brand/favicon-32.png" />
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
     <script>
       (function () {
         var theme = null;
@@ -31,7 +37,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260530j" />
+    <link rel="stylesheet" href="styles.css?v=20260531a" />
   </head>
   <body>
     <header class="site-header" aria-label="Primary navigation">
@@ -88,20 +94,22 @@
         </div>
 
         <div class="hero-scene" aria-hidden="true">
-          <img
-            class="hero-product-image hero-product-image-light"
-            src="assets/hero/miloflow-dynamic-bar-hero-light.webp?v=20260530f"
-            alt=""
-            decoding="async"
-            fetchpriority="high"
-          />
-          <img
-            class="hero-product-image hero-product-image-dark"
-            src="assets/hero/miloflow-dynamic-bar-hero-dark.webp?v=20260530f"
-            alt=""
-            decoding="async"
-            fetchpriority="high"
-          />
+          <picture>
+            <source
+              class="hero-product-source-dark"
+              srcset="assets/hero/miloflow-dynamic-bar-hero-dark.webp?v=20260530f"
+              media="(prefers-color-scheme: dark)"
+            />
+            <img
+              class="hero-product-image"
+              src="assets/hero/miloflow-dynamic-bar-hero-light.webp?v=20260530f"
+              data-light-src="assets/hero/miloflow-dynamic-bar-hero-light.webp?v=20260530f"
+              data-dark-src="assets/hero/miloflow-dynamic-bar-hero-dark.webp?v=20260530f"
+              alt=""
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
         </div>
       </section>
 
@@ -385,6 +393,8 @@
         var root = document.documentElement;
         var button = document.querySelector(".theme-toggle");
         var label = button ? button.querySelector(".theme-label") : null;
+        var heroImage = document.querySelector(".hero-product-image");
+        var heroDarkSource = document.querySelector(".hero-product-source-dark");
         var systemDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
         var selectedTheme = readStoredTheme();
 
@@ -405,6 +415,25 @@
             return selectedTheme;
           }
           return systemDark && systemDark.matches ? "dark" : "light";
+        }
+
+        function updateHeroImage() {
+          if (!heroImage) return;
+          if (heroDarkSource) {
+            if (selectedTheme === "dark") {
+              heroDarkSource.setAttribute("media", "all");
+            } else if (selectedTheme === "light") {
+              heroDarkSource.setAttribute("media", "not all");
+            } else {
+              heroDarkSource.setAttribute("media", "(prefers-color-scheme: dark)");
+            }
+          }
+          var src = activeVisualTheme() === "dark"
+            ? heroImage.getAttribute("data-dark-src")
+            : heroImage.getAttribute("data-light-src");
+          if (src && heroImage.getAttribute("src") !== src) {
+            heroImage.setAttribute("src", src);
+          }
         }
 
         function saveTheme(theme) {
@@ -432,6 +461,7 @@
             label.textContent = "Night";
           }
           button.setAttribute("title", "Theme: " + label.textContent + " (" + visualTheme + " active)");
+          updateHeroImage();
         }
 
         if (!button) return;
