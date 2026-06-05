@@ -539,10 +539,10 @@ nav a:hover {
   filter: drop-shadow(0 26px 48px var(--hero-phone-shadow));
   height: auto;
   max-width: none;
+  left: 50%;
   position: absolute;
-  right: clamp(-84px, -5vw, -44px);
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   width: clamp(360px, 27vw, 468px);
   z-index: 0;
 }
