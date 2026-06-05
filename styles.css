@@ -78,6 +78,7 @@
   --hero-scene-shine: rgba(255, 255, 255, 0.42);
   --hero-scene-dot: rgba(30, 107, 99, 0.20);
   --phone-shadow: rgba(92, 108, 100, 0.32);
+  --hero-phone-shadow: rgba(40, 60, 52, 0.26);
   --mock-status-ink: #0e171b;
   --mock-status-dim: rgba(14, 23, 27, 0.26);
   --mock-card-bg: rgba(255, 255, 255, 0.94);
@@ -165,6 +166,7 @@
     --hero-scene-shine: rgba(255, 255, 255, 0.28);
     --hero-scene-dot: rgba(123, 211, 182, 0.32);
     --phone-shadow: rgba(0, 0, 0, 0.36);
+    --hero-phone-shadow: rgba(0, 0, 0, 0.55);
     --mock-status-ink: #f5f2e8;
     --mock-status-dim: rgba(245, 242, 232, 0.34);
     --mock-card-bg: rgba(35, 40, 37, 0.92);
@@ -253,6 +255,7 @@
   --hero-scene-shine: rgba(255, 255, 255, 0.28);
   --hero-scene-dot: rgba(123, 211, 182, 0.32);
   --phone-shadow: rgba(0, 0, 0, 0.36);
+  --hero-phone-shadow: rgba(0, 0, 0, 0.55);
   --mock-status-ink: #f5f2e8;
   --mock-status-dim: rgba(245, 242, 232, 0.34);
   --mock-card-bg: rgba(35, 40, 37, 0.92);
@@ -465,7 +468,6 @@ nav a:hover {
   background-image: radial-gradient(circle, var(--hero-flow-dot) 1.3px, transparent 1.7px);
   background-position: 0 0;
   background-size: 18px 18px;
-  bottom: clamp(18px, 4.4vw, 58px);
   height: clamp(230px, 24vw, 340px);
   left: max(-18px, calc(clamp(22px, 6vw, 84px) - 42px));
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 72%, rgba(0, 0, 0, 0.34) 84%, transparent 94%);
@@ -473,8 +475,10 @@ nav a:hover {
   opacity: 0.66;
   pointer-events: none;
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: min(1240px, 70vw);
-  z-index: 2;
+  z-index: 0;
 }
 
 .hero-flow-visual svg {
@@ -514,7 +518,7 @@ nav a:hover {
   margin-right: calc(clamp(22px, 6vw, 84px) * -1);
   min-width: 0;
   opacity: 0.92;
-  overflow: hidden;
+  overflow: visible;
   pointer-events: none;
   position: relative;
   width: 100%;
@@ -530,43 +534,21 @@ nav a:hover {
   z-index: 1;
 }
 
-.hero-scene::after {
-  background:
-    linear-gradient(90deg, var(--page) 0%, rgba(255, 255, 255, 0) 18%),
-    linear-gradient(180deg, var(--page) 0%, rgba(255, 255, 255, 0) 14%, rgba(255, 255, 255, 0) 78%, var(--page) 100%),
-    linear-gradient(270deg, var(--page) 0%, rgba(255, 255, 255, 0) 12%);
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-  z-index: 2;
-}
-
 .hero-product-image {
   display: block;
+  filter: drop-shadow(0 26px 48px var(--hero-phone-shadow));
   height: auto;
   max-width: none;
-  mix-blend-mode: multiply;
   position: absolute;
-  right: clamp(-220px, -10vw, -120px);
+  right: clamp(-84px, -5vw, -44px);
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(820px, 62vw, 1120px);
+  width: clamp(360px, 27vw, 468px);
   z-index: 0;
 }
 
 .hero-scene picture {
   display: contents;
-}
-
-:root[data-theme="dark"] .hero-product-image {
-  mix-blend-mode: normal;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .hero-product-image {
-    mix-blend-mode: normal;
-  }
 }
 
 .phone {
@@ -1651,14 +1633,16 @@ footer p {
   }
 
   .hero-flow-visual {
-    bottom: 18px;
+    bottom: clamp(16px, 7vw, 40px);
     height: min(72vw, 292px);
     left: -34%;
+    top: auto;
+    transform: none;
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 48%, rgba(0, 0, 0, 0.28) 58%, transparent 68%);
     mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 48%, rgba(0, 0, 0, 0.28) 58%, transparent 68%);
     opacity: 0.58;
     width: 168%;
-    z-index: 3;
+    z-index: 1;
   }
 
   .hero-flow-line {
@@ -1671,10 +1655,10 @@ footer p {
     display: flex;
     grid-column: 1;
     grid-row: 2;
-    height: clamp(300px, 84vw, 360px);
+    height: clamp(300px, 86vw, 380px);
     inset: auto;
     justify-content: center;
-    margin: -18px calc(clamp(22px, 6vw, 84px) * -1) -46px;
+    margin: 0 calc(clamp(22px, 6vw, 84px) * -1) -16px;
     opacity: 1;
     position: relative;
     width: auto;
@@ -1690,14 +1674,13 @@ footer p {
     position: relative;
     right: auto;
     top: auto;
-    transform: translateX(1%);
-    width: min(142vw, 580px);
+    transform: translateX(9%);
+    width: min(60vw, 248px);
   }
 
   .hero-product-image {
-    filter: contrast(1.08) saturate(1.04);
-    mix-blend-mode: normal;
-    opacity: 0.96;
+    filter: drop-shadow(0 18px 34px var(--hero-phone-shadow));
+    opacity: 1;
   }
 
   .hero-title-main {
