@@ -286,8 +286,10 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 section[id] {
@@ -385,6 +387,20 @@ nav a:hover {
 
 .header-cta:hover {
   background: rgba(123, 211, 182, 0.28);
+}
+
+.header-cta-short {
+  display: none;
+}
+
+nav a,
+.header-cta,
+.theme-toggle,
+.primary-action,
+.secondary-action,
+.plan-action,
+.footer-links a {
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
 
 .theme-toggle {
@@ -1028,7 +1044,7 @@ button:focus-visible {
   align-content: start;
   background: var(--card-bg);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: var(--card-shadow);
   display: grid;
   gap: 8px;
@@ -1071,7 +1087,7 @@ button:focus-visible {
 }
 
 .workflow-steps span {
-  color: var(--flow);
+  color: var(--eyebrow);
   font-size: 12px;
   font-weight: 950;
   letter-spacing: 0.12em;
@@ -1121,7 +1137,7 @@ button:focus-visible {
   backdrop-filter: blur(24px) saturate(1.25);
   background: var(--liquid-heading-bg);
   border: 1px solid var(--liquid-heading-border);
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: var(--liquid-heading-shadow);
   max-width: none;
   padding: 34px clamp(24px, 5vw, 46px);
@@ -1138,7 +1154,7 @@ button:focus-visible {
   backdrop-filter: blur(28px) saturate(1.35);
   background: var(--liquid-card-bg);
   border-color: var(--liquid-card-border);
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: var(--liquid-card-shadow);
   min-height: 0;
   padding: 26px;
@@ -1150,7 +1166,7 @@ button:focus-visible {
     radial-gradient(circle at 32% 25%, rgba(255, 255, 255, 0.42), transparent 32%),
     linear-gradient(135deg, rgba(203, 247, 239, 0.32), rgba(26, 161, 150, 0.22));
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 8px;
+  border-radius: 14px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     0 16px 36px rgba(0, 0, 0, 0.22);
@@ -1208,7 +1224,7 @@ h2 {
 article {
   background: var(--card-bg);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: var(--card-shadow);
   padding: 26px;
 }
@@ -1228,7 +1244,7 @@ article li {
 .feature-icon {
   align-items: center;
   background: rgba(123, 211, 182, 0.16);
-  border-radius: 8px;
+  border-radius: 14px;
   color: var(--mint);
   display: inline-flex;
   font-weight: 900;
@@ -1306,7 +1322,7 @@ article li {
 .provider-card {
   background: var(--provider-bg);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: var(--card-shadow);
   display: grid;
   gap: 22px;
@@ -1365,7 +1381,7 @@ article li {
 }
 
 .provider-card dt {
-  color: var(--flow);
+  color: var(--eyebrow);
   font-size: 11px;
   font-weight: 850;
   letter-spacing: 0.07em;
@@ -1439,7 +1455,7 @@ article li {
   margin: 0 0 22px;
   min-height: 44px;
   padding: 0 18px;
-  width: fit-content;
+  width: 100%;
 }
 
 .plan-action.primary {
@@ -1461,7 +1477,7 @@ article li {
   align-items: center;
   background: var(--card-bg);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: var(--card-shadow);
   display: flex;
   gap: 34px;
@@ -1511,7 +1527,7 @@ article li {
 }
 
 .legal-grid a {
-  color: var(--flow);
+  color: var(--eyebrow);
   font-weight: 800;
 }
 
@@ -1715,9 +1731,28 @@ footer p {
 }
 
 @media (max-width: 860px) {
-  nav,
-  .header-cta {
+  nav {
     display: none;
+  }
+
+  .header-actions {
+    gap: 12px;
+  }
+
+  .header-cta-full {
+    display: none;
+  }
+
+  .header-cta-short {
+    display: inline;
+  }
+
+  .theme-label {
+    display: none;
+  }
+
+  .theme-toggle {
+    padding: 0 10px;
   }
 
   .hero {
@@ -1791,12 +1826,10 @@ footer p {
   }
 
   .liquid-milo .section-heading {
-    border-radius: 8px;
     padding: 28px 24px;
   }
 
   .provider-card {
-    border-radius: 8px;
     padding: 22px;
   }
 
@@ -1854,6 +1887,11 @@ footer p {
 
 @media (max-width: 700px) {
   .signal-strip {
-    display: none;
+    gap: 8px;
+  }
+
+  .signal-strip span {
+    font-size: 12px;
+    padding: 8px 11px;
   }
 }
