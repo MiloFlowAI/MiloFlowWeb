@@ -45,7 +45,6 @@
   --metal-border: rgba(26, 38, 41, 0.10);
   --metal-top: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
   --provider-bg:
-    linear-gradient(90deg, rgba(123, 211, 182, 0.08) 1px, transparent 1px) 0 0 / 24px 24px,
     linear-gradient(145deg, rgba(123, 211, 182, 0.13), transparent 42%),
     var(--card-bg);
   --provider-cloud-bg:
@@ -144,7 +143,6 @@
     --metal-border: rgba(255, 255, 255, 0.12);
     --metal-top: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
     --provider-bg:
-      linear-gradient(90deg, rgba(123, 211, 182, 0.08) 1px, transparent 1px) 0 0 / 24px 24px,
       linear-gradient(145deg, rgba(123, 211, 182, 0.10), transparent 42%),
       var(--surface);
     --provider-cloud-bg:
@@ -242,7 +240,6 @@
   --metal-border: rgba(255, 255, 255, 0.12);
   --metal-top: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
   --provider-bg:
-    linear-gradient(90deg, rgba(123, 211, 182, 0.08) 1px, transparent 1px) 0 0 / 24px 24px,
     linear-gradient(145deg, rgba(123, 211, 182, 0.10), transparent 42%),
     var(--surface);
   --provider-cloud-bg:
