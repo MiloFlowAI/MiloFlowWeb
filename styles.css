@@ -1828,6 +1828,12 @@ footer p {
     font-size: 42px;
   }
 
+  /* match the other section headings on mobile (was left at its smaller
+     desktop clamp, making it visibly smaller than neighbouring sections) */
+  .workflow h2 {
+    font-size: 42px;
+  }
+
   .band {
     padding: 58px 22px;
   }
