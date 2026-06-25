@@ -23,6 +23,9 @@
   --page-glow-b: rgba(255, 255, 255, 0.34);
   --page-glow-c: rgba(30, 107, 99, 0.07);
   --page-glow-violet: rgba(109, 92, 246, 0.10);
+  /* hero spotlight blooms (teal brand + violet accent) */
+  --hero-spot-a: rgba(26, 161, 150, 0.10);
+  --hero-spot-b: rgba(109, 92, 246, 0.08);
   --phone-surface:
     linear-gradient(145deg, rgba(255, 255, 255, 0.72), transparent 38%),
     linear-gradient(160deg, #fbfdf8 0%, #e9f1e8 100%);
@@ -125,6 +128,8 @@
     --page-glow-c: transparent;
     --violet: #9b8ef3;
     --page-glow-violet: rgba(139, 124, 255, 0.14);
+    --hero-spot-a: rgba(39, 183, 170, 0.16);
+    --hero-spot-b: rgba(139, 124, 255, 0.16);
     --phone-surface: linear-gradient(160deg, #20241f 0%, #30362f 100%);
     --assistant-bubble: #383d37;
     --user-bubble: #41372e;
@@ -221,6 +226,8 @@
   --page-glow-c: transparent;
   --violet: #9b8ef3;
   --page-glow-violet: rgba(139, 124, 255, 0.14);
+  --hero-spot-a: rgba(39, 183, 170, 0.16);
+  --hero-spot-b: rgba(139, 124, 255, 0.16);
   --phone-surface: linear-gradient(160deg, #20241f 0%, #30362f 100%);
   --assistant-bubble: #383d37;
   --user-bubble: #41372e;
@@ -509,6 +516,9 @@ nav a.active::after {
 
 .hero {
   align-items: center;
+  background:
+    radial-gradient(900px 520px at 30% 28%, var(--hero-spot-a), transparent 60%),
+    radial-gradient(760px 600px at 82% 8%, var(--hero-spot-b), transparent 62%);
   display: grid;
   gap: clamp(26px, 4vw, 56px);
   grid-template-columns: minmax(0, 0.58fr) minmax(300px, 0.42fr);
