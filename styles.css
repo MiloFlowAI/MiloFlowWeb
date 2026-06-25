@@ -15,13 +15,14 @@
   --brand-milo: #1e6b63;
   --flow: #1aa196;
   --mint: #7bd3b6;
-  --coral: #e96f50;
+  --coral: #f0566f;
   --gold: #f2c66b;
-  --violet: #9b8ef3;
+  --violet: #6d5cf6;
   --page: #e3e8de;
   --page-glow-a: rgba(123, 211, 182, 0.18);
   --page-glow-b: rgba(255, 255, 255, 0.34);
   --page-glow-c: rgba(30, 107, 99, 0.07);
+  --page-glow-violet: rgba(109, 92, 246, 0.10);
   --phone-surface:
     linear-gradient(145deg, rgba(255, 255, 255, 0.72), transparent 38%),
     linear-gradient(160deg, #fbfdf8 0%, #e9f1e8 100%);
@@ -118,6 +119,8 @@
     --page-glow-a: rgba(123, 211, 182, 0.12);
     --page-glow-b: transparent;
     --page-glow-c: transparent;
+    --violet: #9b8ef3;
+    --page-glow-violet: rgba(139, 124, 255, 0.14);
     --phone-surface: linear-gradient(160deg, #20241f 0%, #30362f 100%);
     --assistant-bubble: #383d37;
     --user-bubble: #41372e;
@@ -207,6 +210,8 @@
   --page-glow-a: rgba(123, 211, 182, 0.12);
   --page-glow-b: transparent;
   --page-glow-c: transparent;
+  --violet: #9b8ef3;
+  --page-glow-violet: rgba(139, 124, 255, 0.14);
   --phone-surface: linear-gradient(160deg, #20241f 0%, #30362f 100%);
   --assistant-bubble: #383d37;
   --user-bubble: #41372e;
@@ -300,6 +305,7 @@ body {
   background:
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 48px 48px,
     linear-gradient(180deg, var(--grid-line) 1px, transparent 1px) 0 0 / 48px 48px,
+    radial-gradient(820px 560px at 88% -8%, var(--page-glow-violet), transparent 60%),
     linear-gradient(145deg, var(--page-glow-b) 0%, var(--page) 42%, var(--page-glow-a) 100%),
     var(--page);
   color: var(--ink);
@@ -837,7 +843,7 @@ nav a.active::after {
 }
 
 .you-bubble span {
-  color: #e96f50;
+  color: var(--coral);
 }
 
 .action-bubble {
