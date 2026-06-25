@@ -1118,28 +1118,17 @@ button:focus-visible {
   position: relative;
 }
 
-.liquid-milo::before {
-  background: var(--liquid-haze);
-  border: 1px solid var(--liquid-haze-border);
-  border-radius: 999px;
-  content: "";
-  filter: blur(0.2px);
-  height: 118px;
-  left: clamp(22px, 6vw, 84px);
-  pointer-events: none;
-  position: absolute;
-  right: clamp(22px, 6vw, 84px);
-  top: 52px;
-}
+/* heading is plain text on the band — no nested frame/pill */
+.liquid-milo::before { content: none; }
 
 .liquid-milo .section-heading {
-  backdrop-filter: blur(24px) saturate(1.25);
-  background: var(--liquid-heading-bg);
-  border: 1px solid var(--liquid-heading-border);
-  border-radius: 20px;
-  box-shadow: var(--liquid-heading-shadow);
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
   max-width: none;
-  padding: 34px clamp(24px, 5vw, 46px);
+  padding: 0 4px;
   position: relative;
   z-index: 1;
 }
@@ -1819,13 +1808,8 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .liquid-milo::before {
-    height: 96px;
-    top: 44px;
-  }
-
   .liquid-milo .section-heading {
-    padding: 28px 24px;
+    padding: 0 4px;
   }
 
   .provider-card {
