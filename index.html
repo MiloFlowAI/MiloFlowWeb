@@ -57,9 +57,6 @@
           <span class="theme-icon" aria-hidden="true"></span>
           <span class="theme-label">System</span>
         </button>
-        <button class="nav-toggle" type="button" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </header>
 
@@ -499,7 +496,6 @@
       (function () {
         var header = document.querySelector(".site-header");
         var nav = document.getElementById("primary-nav");
-        var toggle = document.getElementById("navToggle");
         var reduceMotion = window.matchMedia
           ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
           : false;
@@ -514,23 +510,7 @@
           onScroll();
         }
 
-        // 2. Mobile hamburger menu.
-        if (toggle && nav) {
-          toggle.addEventListener("click", function () {
-            var open = nav.classList.toggle("open");
-            toggle.setAttribute("aria-expanded", open ? "true" : "false");
-            toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-          });
-          nav.addEventListener("click", function (event) {
-            if (event.target.tagName === "A") {
-              nav.classList.remove("open");
-              toggle.setAttribute("aria-expanded", "false");
-              toggle.setAttribute("aria-label", "Open menu");
-            }
-          });
-        }
-
-        // 3. Scroll-reveal on section bands.
+        // 2. Scroll-reveal on section bands.
         var revealTargets = document.querySelectorAll(".band, .hero-copy, .hero-scene");
         if (!reduceMotion && "IntersectionObserver" in window) {
           revealTargets.forEach(function (el) { el.classList.add("reveal"); });
@@ -545,7 +525,7 @@
           revealTargets.forEach(function (el) { revealObserver.observe(el); });
         }
 
-        // 4. Scroll-spy: highlight the nav link for the section in view.
+        // 3. Scroll-spy: highlight the nav link for the section in view.
         var navAnchors = {};
         if (nav) {
           nav.querySelectorAll("a[href^='#']").forEach(function (a) {
