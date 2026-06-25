@@ -45,7 +45,7 @@
         <span><span class="brand-milo">Milo</span><span class="brand-flow">Flow</span></span>
       </a>
       <div class="header-actions">
-        <nav>
+        <nav id="primary-nav">
           <a href="#workflow">Flow</a>
           <a href="#use-cases">Workspaces</a>
           <a href="#models">AI options</a>
@@ -56,6 +56,9 @@
         <button class="theme-toggle" type="button" aria-label="Theme mode: System" aria-pressed="mixed">
           <span class="theme-icon" aria-hidden="true"></span>
           <span class="theme-label">System</span>
+        </button>
+        <button class="nav-toggle" type="button" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </header>
@@ -489,6 +492,81 @@
         }
 
         updateButton();
+      })();
+    </script>
+    <script>
+      // Header shadow on scroll, scroll-reveal, mobile menu, and scroll-spy.
+      (function () {
+        var header = document.querySelector(".site-header");
+        var nav = document.getElementById("primary-nav");
+        var toggle = document.getElementById("navToggle");
+        var reduceMotion = window.matchMedia
+          ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          : false;
+
+        // 1. Header shadow once scrolled past the top.
+        if (header) {
+          var onScroll = function () {
+            if (window.scrollY > 8) header.classList.add("scrolled");
+            else header.classList.remove("scrolled");
+          };
+          window.addEventListener("scroll", onScroll, { passive: true });
+          onScroll();
+        }
+
+        // 2. Mobile hamburger menu.
+        if (toggle && nav) {
+          toggle.addEventListener("click", function () {
+            var open = nav.classList.toggle("open");
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          });
+          nav.addEventListener("click", function (event) {
+            if (event.target.tagName === "A") {
+              nav.classList.remove("open");
+              toggle.setAttribute("aria-expanded", "false");
+              toggle.setAttribute("aria-label", "Open menu");
+            }
+          });
+        }
+
+        // 3. Scroll-reveal on section bands.
+        var revealTargets = document.querySelectorAll(".band, .hero-copy, .hero-scene");
+        if (!reduceMotion && "IntersectionObserver" in window) {
+          revealTargets.forEach(function (el) { el.classList.add("reveal"); });
+          var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+          revealTargets.forEach(function (el) { revealObserver.observe(el); });
+        }
+
+        // 4. Scroll-spy: highlight the nav link for the section in view.
+        var navAnchors = {};
+        if (nav) {
+          nav.querySelectorAll("a[href^='#']").forEach(function (a) {
+            navAnchors[a.getAttribute("href").slice(1)] = a;
+          });
+        }
+        var spyTargets = Object.keys(navAnchors)
+          .map(function (id) { return document.getElementById(id); })
+          .filter(Boolean);
+        if (spyTargets.length && "IntersectionObserver" in window) {
+          var spy = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                Object.keys(navAnchors).forEach(function (k) { navAnchors[k].classList.remove("active"); });
+                var a = navAnchors[entry.target.id];
+                if (a) a.classList.add("active");
+              }
+            });
+          }, { rootMargin: "-45% 0px -50% 0px" });
+          spyTargets.forEach(function (s) { spy.observe(s); });
+        }
       })();
     </script>
   </body>
