@@ -11,6 +11,21 @@
     <link rel="canonical" href="https://miloflow.ai/support.html" />
     <link rel="icon" sizes="32x32" href="assets/brand/favicon-32.png" />
     <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
+    <script>
+      (function () {
+        var theme = null;
+        try {
+          theme = window.localStorage.getItem("miloflow-theme");
+        } catch (error) {
+          theme = null;
+        }
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.setAttribute("data-theme", theme);
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css?v=20260609a" />
   </head>
   <body>
@@ -24,6 +39,10 @@
           <a href="/">Home</a>
           <a href="privacy.html">Privacy</a>
         </nav>
+        <button class="theme-toggle" type="button" aria-label="Theme mode: System" aria-pressed="mixed">
+          <span class="theme-icon" aria-hidden="true"></span>
+          <span class="theme-label">System</span>
+        </button>
       </div>
     </header>
 
@@ -92,5 +111,85 @@
         <a href="mailto:admin@miloflow.ai">Contact</a>
       </div>
     </footer>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var button = document.querySelector(".theme-toggle");
+        var label = button ? button.querySelector(".theme-label") : null;
+        var systemDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+        var selectedTheme = readStoredTheme();
+
+        function readStoredTheme() {
+          try {
+            var theme = window.localStorage.getItem("miloflow-theme");
+            if (theme === "light" || theme === "dark" || theme === "system") {
+              return theme;
+            }
+          } catch (error) {
+            return "system";
+          }
+          return "system";
+        }
+
+        function activeVisualTheme() {
+          if (selectedTheme === "light" || selectedTheme === "dark") {
+            return selectedTheme;
+          }
+          return systemDark && systemDark.matches ? "dark" : "light";
+        }
+
+        function saveTheme(theme) {
+          try {
+            window.localStorage.setItem("miloflow-theme", theme);
+          } catch (error) {
+            return;
+          }
+        }
+
+        function updateButton() {
+          var visualTheme = activeVisualTheme();
+          if (!button || !label) return;
+          if (selectedTheme === "system") {
+            button.setAttribute("aria-pressed", "mixed");
+            button.setAttribute("aria-label", "Theme mode: System. Switch to day mode");
+            label.textContent = "System";
+          } else if (selectedTheme === "light") {
+            button.setAttribute("aria-pressed", "false");
+            button.setAttribute("aria-label", "Theme mode: Day. Switch to night mode");
+            label.textContent = "Day";
+          } else {
+            button.setAttribute("aria-pressed", "true");
+            button.setAttribute("aria-label", "Theme mode: Night. Switch to system mode");
+            label.textContent = "Night";
+          }
+          button.setAttribute("title", "Theme: " + label.textContent + " (" + visualTheme + " active)");
+        }
+
+        if (!button) return;
+
+        button.addEventListener("click", function (event) {
+          event.preventDefault();
+          var nextTheme = selectedTheme === "system" ? "light" : selectedTheme === "light" ? "dark" : "system";
+          if (nextTheme === "light" || nextTheme === "dark") {
+            root.setAttribute("data-theme", nextTheme);
+          } else {
+            root.removeAttribute("data-theme");
+          }
+          selectedTheme = nextTheme;
+          saveTheme(nextTheme);
+          updateButton();
+        }, false);
+
+        if (systemDark) {
+          if (systemDark.addEventListener) {
+            systemDark.addEventListener("change", updateButton);
+          } else if (systemDark.addListener) {
+            systemDark.addListener(updateButton);
+          }
+        }
+
+        updateButton();
+      })();
+    </script>
   </body>
 </html>
