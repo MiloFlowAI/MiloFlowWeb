@@ -1218,20 +1218,23 @@ button:focus-visible {
 }
 
 .section-heading {
-  max-width: 720px;
+  max-width: none;
 }
 
 h2 {
   font-size: clamp(40px, 5.4vw, 64px);
   letter-spacing: 0;
-  line-height: 1;
+  line-height: 1.04;
   margin: 10px 0 18px;
+  text-wrap: balance;
 }
 
+/* keep the supporting paragraph at a comfortable reading measure */
 .section-heading p:not(.eyebrow) {
   color: var(--muted);
   font-size: 19px;
   line-height: 1.55;
+  max-width: 720px;
 }
 
 .feature-grid {
